@@ -1,0 +1,27 @@
+version: '2.1'
+services:
+    insurance-prototype:
+      container_name: insurance-prototype
+      build:
+         context: ./
+         args:
+             APP_ENV: 'local'
+             BUILD_PATH: 'src'
+      ports:
+         - '80'
+      volumes:
+         - ./:/var/www/html
+      environment:
+         - VIRTUAL_HOST=insurance-prototype.localhost
+      dns:
+          - 172.19.0.1
+      networks:
+          - default
+          - dns2
+networks:
+  default:
+    external:
+      name: docker_default
+  dns2:
+    external:
+      name: docker_dns2
