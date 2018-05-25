@@ -14,3 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('question', 'QuestionController@index');
+Route::post('question', 'QuestionController@next');
